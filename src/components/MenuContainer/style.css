@@ -84,13 +84,16 @@
 .carSale{
     z-index: 2;
     position: absolute;
-    width: 80%;
+    left: 80%;
     list-style-type: none;
-    line-height: 2em;
+    line-height: 1em;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
     flex-direction: column;
+    text-align: left;
+}
+.carSale>ul>li{
+    list-style-type: none;
+    font-size: 16px;
 }
 button{
     width: 30%;

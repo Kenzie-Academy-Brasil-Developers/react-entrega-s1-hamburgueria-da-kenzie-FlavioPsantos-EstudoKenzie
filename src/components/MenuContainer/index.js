@@ -3,12 +3,16 @@ import '../Product'
 import { useState } from 'react'
 function MenuContainer({product}){    
     const [currentSale, setCurrentSale] = useState([])
+    const [cartTotal, setCartTotal] = useState(0)
+
+
     const handleClick =(id)=>{
         const productFinded = product.find((item)=> item.id === id)
         productFinded !== undefined ? (setCurrentSale([...currentSale,productFinded])): (<h1>No find this product</h1>)
-
+        const acurace = (currentSale.reduce((acc,item)=> acc += item.price, productFinded.price))
+        setCartTotal(acurace)
     }
-    const valueAcurace =  currentSale.reduce((acc,item)=> acc + item.price, 0)
+    
     
     return(
         <>
@@ -17,7 +21,8 @@ function MenuContainer({product}){
             {currentSale.map((product, index)=> <li  className="productSale" key={index}><p>{product.name}
              <span>{product.price}</span><span onClick={()=>handleClick(product.id)}>Buy</span></p></li>)}
              </ul>
-             <span>Price:{parseFloat(valueAcurace.toFixed(2))}</span>
+
+             <span>Price:{cartTotal}</span>
         </div>
         <ul className="allProduct">
             {product.map((product, index)=> <li  className="product" key={index}><p>{product.name}
