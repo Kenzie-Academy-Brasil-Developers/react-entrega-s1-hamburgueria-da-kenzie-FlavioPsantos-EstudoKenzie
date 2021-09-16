@@ -12,7 +12,7 @@ function Product() {
     { id: 6, name: "Coca", category: "Bebidas", price: 4.99 },
     { id: 7, name: "Fanta", category: "Bebidas", price: 4.99 },
   ]);
-  const ShowProducts = products.filter((item) => item.name.includes(userText));
+  const ShowProducts = products.filter((item) => item.name.toUpperCase().includes(userText.toUpperCase()));
 
   return (
     <>
